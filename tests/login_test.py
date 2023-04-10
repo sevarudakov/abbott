@@ -14,7 +14,7 @@ class TestLogin:
         email_password = config["email_password"]
 
         login_page = self.select_country_and_language(config)
-        identity_page = login_page.select_country_and_language(email, password).click_send_code_button()
+        identity_page = login_page.login(email, password).click_send_code_button()
         assert not identity_page.is_verify_and_login_button_enabled(), "The button should be disabled"
 
         outlook_util = OutlookUtil(email, email_password)
